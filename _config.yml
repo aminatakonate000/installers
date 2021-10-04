@@ -2,7 +2,7 @@ title: composer/installers
 description: A Multi-Framework Composer Library Installer
 google_analytics: UA-32631384-1
 show_downloads: true
-theme: jekyll-theme-time-machine
+theme: jekyll-theme-cayman
 
 gems:
   - jekyll-mentions
