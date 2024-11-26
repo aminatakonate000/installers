@@ -1,5 +1,32 @@
 # Change Log
 
+## v2.3.0 - 2024-06-24
+
+### Added
+* Added recipes for Drupal 10.3+ to DrupalInstaller #534
+* Added BotbleInstaller #533
+* Added new Moodle types (communication, forumreport, h5plib, mlbackend, qbank, tiny) #535
+* Added support for Fork CMS ^6 #529
+* Added ConcreteCMS installers and types mimicking concrete5 ones #522
+
+## v2.2.0 - 2022-08-20
+### Added
+* Added matomo-plugin by @codemorgan (#514)
+
+## v2.1.1 - 2022-04-13
+### Fixed
+* Fixed TastyIgniter parsing of extra data to use the package being installed instead of the root package (#507)
+
+## v2.1.0 - 2022-03-18
+### Added
+* Added new types (antivirus, customfield, contenttype, dataformat, media, paygw) for Moodle (#497)
+* Added new `tastyigniter-module` type to TastyIgniter (#503)
+* Added new `extra.plugin-modifies-install-path` to composer/installers for Composer 2.3 support, see [docs](https://getcomposer.org/doc/articles/plugins.md#plugin-modifies-install-path) if you are writing your own custom installer plugin.
+
+## v2.0.1 - 2021-09-13
+### Fixed
+* Fixed installer for Pantheon Quicksilver modules/scripts [#494](https://github.com/composer/installers/pull/494).
+
 ## v2.0.0 - 2021-08-04
 ### Added
 * Added installer for Pantheon Quicksilver modules/scripts [#492](https://github.com/composer/installers/pull/492).
@@ -23,6 +50,10 @@
 * Removed support for TYPO3 CMS
 * Removed support for Craft
 * Removed support for Pimcore
+
+## v1.12.0 - 2021-09-13
+### Added
+* Added installer for Pantheon Quicksilver modules/scripts #495.
 
 ## v1.11.0 - 2021-04-28
 ### Added

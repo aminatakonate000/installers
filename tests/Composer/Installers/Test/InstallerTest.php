@@ -8,9 +8,9 @@ use Composer\Installers\Installer;
 use Composer\Package\Package;
 use Composer\Package\RootPackage;
 use Composer\Util\Filesystem;
-use Composer\Downloader\DownloadManager;
 use Composer\Repository\InstalledRepositoryInterface;
 use Composer\IO\IOInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 
 class InstallerTest extends TestCase
 {
@@ -22,9 +22,7 @@ class InstallerTest extends TestCase
     private $vendorDir;
     /** @var string */
     private $binDir;
-    /** @var DownloadManager */
-    private $dm;
-    /** @var InstalledRepositoryInterface */
+    /** @var InstalledRepositoryInterface&MockObject */
     private $repository;
     /** @var IOInterface */
     private $io;
@@ -35,9 +33,8 @@ class InstallerTest extends TestCase
     {
         $this->fs = new Filesystem;
 
-        $this->composer = new Composer();
-        $this->config = new Config();
-        $this->composer->setConfig($this->config);
+        $this->composer = $this->getComposer();
+        $this->config = $this->composer->getConfig();
 
         $this->vendorDir = realpath(sys_get_temp_dir()) . DIRECTORY_SEPARATOR . 'baton-test-vendor';
         $this->ensureDirectoryExistsAndClear($this->vendorDir);
@@ -52,16 +49,8 @@ class InstallerTest extends TestCase
             ),
         ));
 
-        $this->dm = $this->getMockBuilder(DownloadManager::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $this->composer->setDownloadManager($this->dm);
-
         $this->repository = $this->getMockBuilder(InstalledRepositoryInterface::class)->getMock();
         $this->io = $this->getMockIO();
-
-        $consumerPackage = new RootPackage('foo/bar', '1.0.0', '1.0.0');
-        $this->composer->setPackage($consumerPackage);
     }
 
     public function tearDown(): void
@@ -91,6 +80,8 @@ class InstallerTest extends TestCase
             array('bitrix-module', true),
             array('bitrix-component', true),
             array('bitrix-theme', true),
+            array('botble-plugin', true),
+            array('botble-theme', true),
             array('bonefish-package', true),
             array('cakephp', false),
             array('cakephp-', false),
@@ -108,6 +99,11 @@ class InstallerTest extends TestCase
             array('concrete5-theme', true),
             array('concrete5-core', true),
             array('concrete5-update', true),
+            array('concretecms-block', true),
+            array('concretecms-package', true),
+            array('concretecms-theme', true),
+            array('concretecms-core', true),
+            array('concretecms-update', true),
             array('croogo-plugin', true),
             array('croogo-theme', true),
             array('decibel-app', true),
@@ -162,6 +158,7 @@ class InstallerTest extends TestCase
             array('magento-library', true),
             array('majima-plugin', true),
             array('mako-package', true),
+            array('matomo-plugin', true),
             array('mantisbt-plugin', true),
             array('miaoxing-plugin', true),
             array('modx-extra', true),
@@ -177,6 +174,8 @@ class InstallerTest extends TestCase
             array('moodle-mod', true),
             array('october-module', true),
             array('october-plugin', true),
+            array('quicksilver-script', true),
+            array('quicksilver-module', true),
             array('piwik-plugin', true),
             array('pxcms-module', true),
             array('pxcms-theme', true),
@@ -188,6 +187,8 @@ class InstallerTest extends TestCase
             array('puppet-module', true),
             array('porto-container', true),
             array('processwire-module', true),
+            array('quicksilver-script', true),
+            array('quicksilver-module', true),
             array('radphp-bundle', true),
             array('redaxo-addon', true),
             array('redaxo-bestyle-plugin', true),
@@ -282,6 +283,8 @@ class InstallerTest extends TestCase
             array('bitrix-d7-module', 'bitrix/modules/author.my_module/', 'author/my_module'),
             array('bitrix-d7-component', 'bitrix/components/author/my_component/', 'author/my_component'),
             array('bitrix-d7-template', 'bitrix/templates/author_my_template/', 'author/my_template'),
+            array('botble-plugin', 'platform/plugins/my_plugin/', 'author/my_plugin'),
+            array('botble-theme', 'platform/themes/my_theme/', 'author/my_theme'),
             array('bonefish-package', 'Packages/bonefish/package/', 'bonefish/package'),
             array('cakephp-plugin', 'Plugin/Ftp/', 'shama/ftp'),
             array('chef-cookbook', 'Chef/mre/my_cookbook/', 'mre/my_cookbook'),
@@ -294,6 +297,11 @@ class InstallerTest extends TestCase
             array('concrete5-theme', 'application/themes/concrete5_theme/', 'remo/concrete5_theme'),
             array('concrete5-core', 'concrete/', 'concrete5/core'),
             array('concrete5-update', 'updates/concrete5/', 'concrete5/concrete5'),
+            array('concretecms-block', 'application/blocks/concretecms_block/', 'remo/concretecms_block'),
+            array('concretecms-package', 'packages/concretecms_package/', 'remo/concretecms_package'),
+            array('concretecms-theme', 'application/themes/concretecms_theme/', 'remo/concretecms_theme'),
+            array('concretecms-core', 'concrete/', 'concretecms/core'),
+            array('concretecms-update', 'updates/concretecms/', 'concretecms/concretecms'),
             array('croogo-plugin', 'Plugin/Sitemaps/', 'fahad19/sitemaps'),
             array('croogo-theme', 'View/Themed/Readable/', 'rchavik/readable'),
             array('decibel-app', 'app/someapp/', 'author/someapp'),
@@ -359,6 +367,7 @@ class InstallerTest extends TestCase
             array('modxevo-lib', 'assets/lib/my_lib/', 'shama/my_lib'),
             array('mako-package', 'app/packages/my_package/', 'shama/my_package'),
             array('mantisbt-plugin', 'plugins/MyPlugin/', 'shama/my_plugin'),
+            array('matomo-plugin', 'plugins/VisitSummary/', 'shama/visit-summary'),
             array('mediawiki-extension', 'extensions/APC/', 'author/APC'),
             array('mediawiki-extension', 'extensions/APC/', 'author/APC-extension'),
             array('mediawiki-extension', 'extensions/UploadWizard/', 'author/upload-wizard'),
@@ -391,6 +400,8 @@ class InstallerTest extends TestCase
             array('porto-container', 'app/Containers/container-name/', 'test/container-name'),
             array('radphp-bundle', 'src/Migration/', 'atkrad/migration'),
             array('processwire-module', 'site/modules/HelloWorld/', 'test/hello-world'),
+            array('quicksilver-script', 'web/private/scripts/quicksilver/quicksilver-script', 'shama/quicksilver-script'),
+            array('quicksilver-module', 'web/private/scripts/quicksilver/quicksilver-module', 'shama/quicksilver-module'),
             array('redaxo-addon', 'redaxo/include/addons/my_plugin/', 'shama/my_plugin'),
             array('redaxo-bestyle-plugin', 'redaxo/include/addons/be_style/plugins/my_plugin/', 'shama/my_plugin'),
             array('redaxo5-addon', 'redaxo/src/addons/my_plugin/', 'shama/my_plugin'),
@@ -558,12 +569,13 @@ class InstallerTest extends TestCase
         $package = new Package('foo', '1.0.0', '1.0.0');
 
         $installer = $this->getMockBuilder(Installer::class)
-            ->setMethods(array('getInstallPath'))
+            ->setMethods(array('getInstallPath', 'removeCode'))
             ->setConstructorArgs(array($this->io, $this->composer))
             ->getMock();
         $installer->expects($this->atLeastOnce())->method('getInstallPath')->with($package)->will($this->returnValue(sys_get_temp_dir().'/foo'));
+        $installer->expects($this->atLeastOnce())->method('removeCode')->with($package)->will($this->returnValue(null));
 
-        $repo = $this->getMockBuilder(InstalledRepositoryInterface::class)->getMock();
+        $repo = $this->repository;
         $repo->expects($this->once())->method('hasPackage')->with($package)->will($this->returnValue(true));
         $repo->expects($this->once())->method('removePackage')->with($package);
 

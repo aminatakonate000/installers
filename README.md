@@ -43,6 +43,7 @@ all vendor code in the vendor directory, and not requiring custom installer code
 | Attogram     | `attogram-module`
 | AGL          | `agl-module`
 | Bonefish     | `bonefish-package`
+| Botble       | `botble-plugin`<br>`botble-theme`
 | AnnotateCms  | `annotatecms-module`<br>`annotatecms-component`<br>`annotatecms-service`
 | Bitrix       | `bitrix-module` (deprecated) <br>`bitrix-component` (deprecated) <br>`bitrix-theme` (deprecated) <br><br> `bitrix-d7-module` <br> `bitrix-d7-component` <br> `bitrix-d7-template`
 | CakePHP 2+   | **`cakephp-plugin`**
@@ -52,16 +53,18 @@ all vendor code in the vendor directory, and not requiring custom installer code
 | Cockpit      | `cockpit-module`
 | CodeIgniter  | `codeigniter-library`<br>`codeigniter-third-party`<br>`codeigniter-module`
 | concrete5    | `concrete5-core`<br>`concrete5-package`<br>`concrete5-theme`<br>`concrete5-block`<br>`concrete5-update`
+| ConcreteCMS  | `concretecms-core`<br>`concretecms-package`<br>`concretecms-theme`<br>`concretecms-block`<br>`concretecms-update`
 | Croogo       | `croogo-plugin`<br>`croogo-theme`
 | Decibel      | `decibel-app`
 | Dframe       | `dframe-module`
 | DokuWiki     | `dokuwiki-plugin`<br>`dokuwiki-template`
 | Dolibarr     | `dolibarr-module`
-| Drupal       | <b>`drupal-core`<br>`drupal-module`<br>`drupal-theme`</b><br>`drupal-library`<br>`drupal-profile`<br>`drupal-database-driver`<br>`drupal-drush`<br>`drupal-custom-theme`<br>`drupal-custom-module`<br>`drupal-custom-profile`<br>`drupal-drupal-multisite`<br>`drupal-console`<br>`drupal-console-language`<br>`drupal-config`
+| Drupal       | <b>`drupal-core`<br>`drupal-module`<br>`drupal-theme`</b><br>`drupal-library`<br>`drupal-profile`<br>`drupal-database-driver`<br>`drupal-drush`<br>`drupal-custom-theme`<br>`drupal-custom-module`<br>`drupal-custom-profile`<br>`drupal-drupal-multisite`<br>`drupal-console`<br>`drupal-console-language`<br>`drupal-config`<br>`drupal-recipe`
 | Elgg         | `elgg-plugin`
 | Eliasis      | `eliasis-component`<br>`eliasis-module`<br>`eliasis-plugin`<br>`eliasis-template`
 | ExpressionEngine 3         | `ee3-addon`<br>`ee3-theme`
 | eZ Platform  | `ezplatform-assets`<br>`ezplatform-meta-assets`
+| ForkCMS ^v6.x| `fork-cms-module`<br>`fork-cms-theme`
 | FuelPHP v1.x | `fuel-module`<br>`fuel-package`<br/>`fuel-theme`
 | FuelPHP v2.x | `fuelphp-component`
 | Grav         | `grav-plugin`<br>`grav-theme`
@@ -80,6 +83,7 @@ all vendor code in the vendor directory, and not requiring custom installer code
 | majima       | `majima-plugin`
 | Mako         | `mako-package`
 | MantisBT     | `mantisbt-plugin`
+| Matomo       | `matomo-plugin`
 | Mautic       | `mautic-core`<br>`mautic-plugin`<br>`mautic-theme`
 | Maya         | `maya-module`
 | MODX         | `modx-extra`
@@ -117,7 +121,7 @@ all vendor code in the vendor directory, and not requiring custom installer code
 | SyDES        | `sydes-module`<br>`sydes-theme`
 | Sylius       | `sylius-theme`
 | TAO          | `tao-extension`
-| TastyIgniter | **`tastyigniter-extension`<br>`tastyigniter-theme`**
+| TastyIgniter | **`tastyigniter-module`<br>`tastyigniter-extension`<br>`tastyigniter-theme`**
 | Tusk         | `tusk-task`<br>`tusk-command`<br>`tusk-asset`
 | UserFrosting | `userfrosting-sprinkle`
 | Vanilla      | `vanilla-plugin`<br>`vanilla-theme`
